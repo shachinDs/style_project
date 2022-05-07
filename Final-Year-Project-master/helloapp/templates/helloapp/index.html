@@ -1,0 +1,216 @@
+{% extends "helloapp/layout.html" %}
+{% load static %}
+
+{% block title %}{{request.user.first_name}} {{request.user.last_name}} ⦁ looknearby{% endblock %}
+
+{% block body %} 
+
+
+
+    <!-- FOR STYLE -->
+    <!-- this is the navigation bar -->
+    <div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <h1 class="display-6" style="text-align: center;" id="title">looknearby</h1>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="position:absolute; right: 0px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url "helloapp:index" %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url "helloapp:profile" %}">Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "authentications:logout" %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+
+
+    <!-- FOR STYLE -->
+    <!-- if anybody sends you friend request then this div is for that -->
+
+    <div>
+
+        {% if friend_request %}
+            <ul>
+            {% for friend in friend_request %}
+                
+                {% with friend|add:request.user.username as name %} 
+                    <li><a href="{% url "helloapp:user_details" friend %}">{{ friend }}</a> is asking you to chat. <a href="{% url "chat:room" name %}">let's chat</a></li>
+                {% endwith %}
+
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+    </div>
+
+
+
+    <div class='cont'>
+    <!-- FOR STYLE -->
+    <!-- this is for showing your profile picture and your name -->
+    <!-- DO NOT CHANGE THE ID -->
+    <div id="profile-background">
+
+        <div class="flex-container">
+            
+                {% if request.user.profile.first.profile_picture %}
+                    <img class="profile-picture" src="{{request.user.profile.first.profile_picture.url}}" alt="Image Not Found!" >
+                {% else %}
+                    <img class="profile-picture" src="{% static "helloapp/default_profile_picture.png" %}" alt="Image Not Found!" >
+                {% endif %}
+            
+
+            
+                <h2 id="user-name">{{request.user.first_name}} {{request.user.last_name}}</h2>
+            
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- FOR STYLE -->
+    <!-- this is for showing your profile details -->
+    <!-- DO NOT CHANGE THE ID -->
+  
+
+
+    <div id="profile-bio">
+        <h3> profile About...</h3>
+        <ul id="current-user-info">
+            {% if request.user.profile.first.bio %}
+                <li>{{request.user.profile.first.bio}}</li>
+            {% endif %}
+    
+            <li>{{request.user.first_name}} {{request.user.last_name}}</li>
+    
+            <li>{{request.user.username}}</li>
+    
+            {% if request.user.profile.first.gender %}
+                <li>{{request.user.profile.first.gender}}</li>
+            {% endif %}
+    
+            {% if request.user.profile.first.relationship %}
+                <li>{{request.user.profile.first.relationship}}</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    
+
+
+
+
+    <!-- FOR STYLE -->
+    <!-- these are three buttons to get, send your current location and button to show other people list -->
+    <!-- DO NOT CHANGE THE ID -->
+    <div id="profile-buttons">
+        <!-- 1st button to get user's current location -->
+        <button id="get-location">get my location</button>
+
+        <!-- this is the form to send user's current location to djago database -->
+        <form id="my-form" method="post" action="{% url "helloapp:index" %}">
+            {% csrf_token %}
+            <input type="text" name="latitude" id="lat" value="0" hidden>
+            <input type="text" name="longitude" id="lon" value="0" hidden>
+            <input type="submit" value="send your current location" id="send-your-current-location">
+        </form>
+
+        <!-- 3rd button to show nearby user's username and links to see about themselfs -->
+        <button id="show-people">Show people near you.</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- FOR STYLE -->
+    <!-- this is a list that will show all the others people who are near you! -->
+    <!-- DO NOT CHANGE THE ID -->
+    <div id="other-people-list">
+        <!-- this is the list of all possible users -->
+        <ul id="people-list" style="display: none;"> 
+            {% for people in peoples %} 
+                <li><a href="{% url "helloapp:user_details" people %}">{{ people }}</a></li>
+            {% empty %}
+                <li>No one arround you</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+    
+
+
+
+
+
+    <!-- do not change this script tag -->
+
+    <script>
+        let form=document.querySelector('#my-form');
+        form.addEventListener('submit',()=>{event.preventDefault();})
+
+        document.querySelector('#get-location').onclick = function() {
+            if ( 'geolocation' in navigator ) {
+                console.log ("Geolocation is supported!");
+
+                navigator.geolocation.getCurrentPosition((position) => {
+                    document.querySelector('#lat').value = position.coords.latitude;
+                    document.querySelector('#lon').value = position.coords.longitude;
+                });
+
+            }
+            else {
+                console.log ("Geolocation is not supported!");
+            }
+        }
+
+
+
+        document.querySelector('#show-people').onclick = function() {
+            document.querySelector('#people-list').style.display = "block";
+        }
+
+        let glc=document.querySelector('#get-location');
+let sl=document.querySelector('#send-your-current-location');
+let sa=document.querySelector('#show-people');
+let time=()=>{
+    setTimeout(()=>{
+        sl.style.display='inline';
+    },1000)
+}
+let time1=()=>{
+    setTimeout(()=>{
+        sa.style.display='inline';
+    },1000)
+}
+glc.addEventListener('click',time);
+sl.addEventListener('click',time1);
+    </script>
+
+{% endblock %}

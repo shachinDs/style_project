@@ -1,0 +1,247 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/**/
+/* body {
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+.profile-picture {
+    clip-path: circle();
+    width: 200px;
+    
+}
+
+
+
+@keyframes example {
+    from {color: black;}
+    to {color: #270082;}
+}
+
+#title {
+    animation-name: example;
+    animation-duration: 4s;
+    color: #270082;
+    font-weight: bold;
+    font-size: 25px ;
+}
+
+
+
+#navbarSupportedContent {
+    background-color: #879fc7;
+    font-size: 20px;
+    
+}
+
+
+
+
+#profile-background {
+    background-color: #E5E3C9;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 3px;
+}
+
+
+
+#current-user-info {
+    list-style: none;
+}
+
+
+
+#profile-bio {
+    background-color: #B4CFB0;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 3px;
+}
+
+
+#profile-buttons {
+    background-color: #94B49F;
+    border-radius: 10px;
+    margin: 3px;
+}
+
+
+
+#other-people-list {
+    background-color: #789395;
+    border-radius: 10px;
+    margin: 3px;
+}
+
+
+#people-list {
+    list-style: none;
+}
+
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.flex-container > div {
+    padding: 5px;
+    margin: 10px;
+    font-size: 30px;
+}
+
+
+
+#user-name {
+    margin-top: 45%;
+    font-size: 24px;
+} */
+body{
+    background:  #68A7AD;
+}
+
+
+
+
+
+.cont{
+    margin: 2% 10% ;
+    padding: 3% 5%;
+    font-size: 1.5rem;
+    background-color: #78938A;
+}
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5%;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+h3{
+    display:inline-block;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+    text-transform: capitalize;
+    border-bottom: 2px solid black;
+    padding-bottom: 3px;
+    color:lightsalmon;
+}
+
+
+
+
+
+h2{
+    display: inline-block;
+    margin-left: 10%;
+    font-size: 1.5em;
+    color: brown;
+    
+
+}
+#get-location,#send-your-current-location,#show-people{
+    margin: 5px;
+    padding: 3px;
+    border-radius: 20px;
+    color: maroon;
+
+
+}
+
+
+#send-your-current-location{
+    display: none;
+}
+#show-people{
+    display: none;
+}
+.profile-picture{
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    
+}
+ul{
+    padding-left: 30%;
+    color:black;
+}
+
+#profile-buttons{
+    position: absolute;
+    left: 65% ;
+    top: 60%;
+    
+
+}
+
+
+/* @media (max-width:540px) {
+    #user-name {
+        margin-top: 0px;
+    }
+
+
+    .flex-container > div {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+} */
+
+
+
+

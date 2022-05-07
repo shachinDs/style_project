@@ -1,0 +1,61 @@
+{% extends "authentications/layout.html" %}
+{% load static %}
+{% block title %}login ⦁ looknearby{% endblock %}
+
+{% block body %}
+
+    <!-- FOR STYLE -->
+    {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- FOR STYLE -->
+    <h2 style="color: #084594;" class="display-5">Login page</h2>
+    
+
+    <!-- FOR STYLE -->
+    <form action="{% url "authentications:login" %}" method="post">
+        {% csrf_token %}
+        <br>
+        <div class="mb-3">
+        <div>
+        <label for="username" class="form-label">Username:</label>
+        </div>
+        <input type="text" name="username" id="username" class="form-control">
+        </div>
+        <div class="mb-3">
+        <div>
+        <label for="password" class="form-label">Password:</label>
+        </div>
+        <input type="password" name="password" id="password" aria-describedby="passwordHelp" class="form-control">
+
+        <input type="submit" value="Login" class="btn btn-outline-primary">
+        
+        <ul>
+      <li> 
+           <div id="passwordHelp" class="form-text"> <u>Do not share your password with anyone! </u></div>
+      </ul>
+   
+        </div>
+    
+  
+   
+   
+    </form>
+
+    <!-- FOR STYLE -->
+    {% if request.user.username %} 
+        <button>
+            <a href="{% url "authentications:logout" %}">Logout</a>
+        </button>
+    {% endif %}
+
+    <!-- FOR STYLE -->
+    <p class="lead">
+        hey! don't have an account? then <a class="link-primary" href="{% url "authentications:registration" %}"> <i> <b>Register</b></i></a> Yourself.
+    </p>
+{% endblock %}

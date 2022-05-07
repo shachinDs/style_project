@@ -1,0 +1,96 @@
+ /* body {
+    
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+form {
+    border-top: solid #5463FF 3px;
+}
+
+@keyframes example {
+    from {color: black;}
+    to {color: #270082;}
+}
+
+#title {
+    animation-name: example;
+    animation-duration: 4s;
+    color: #270082;
+    font-weight: bold;
+}
+
+
+#body-content {
+    background-color: #EEEEEE;
+    height: 100vh;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}  */
+#ert{
+    margin: 10px;
+    font-size: 10rem;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+body{
+    font-size: 1.2rem;
+    background: linear-gradient(#c6935a 0%,#c6935a 10%,#1C658C 10%, #1C658C 50%, #398AB9 50%, #398AB9 100%);
+    height: 100vh;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+h1{
+    margin: 10px 20px;
+    
+}
+#body-content{
+    position: absolute;
+    top: 80px;
+    left: 32%;
+    background: #d1c4b4;
+    padding: 0px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-5{
+    border-bottom: blue solid 2px;
+    padding: 0 10px 5px 10px;
+}
+.form-control{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    border-radius: 7px;
+    background-color: #EEEEEE;
+    height: 1.5rem;
+    width: 20rem;
+    padding: 2px 10px;
+    margin-bottom: 30px;
+    display: block;
+}
+.btn-outline-primary{
+    padding: 5px 20px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+
+}
+.btn-outline-primary:hover{
+    color: black;
+    background-color:cadetblue;
+
+
+}
+
+

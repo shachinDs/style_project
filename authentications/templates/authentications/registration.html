@@ -1,0 +1,50 @@
+{% extends "authentications/layout.html" %}
+
+{% block title %}registration ⦁ Looknearby{% endblock %}
+>
+{% block body %}
+    <!-- FOR STYLE -->
+
+    <h2 class="display-5">Registration Form</h2>
+
+    <!-- FOR STYLE -->
+    <form action="{% url "authentications:registration" %}" method="post">
+    
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.username.label }}
+            {{  form.username }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.password1.label }}
+            {{ form.password1 }}
+        </div>
+    
+        <div class="mb-3">
+            {{ form.password2.label }}
+            {{ form.password2 }}
+        </div>
+    
+
+
+     
+        <input type="submit" value="Register" class="btn btn-outline-primary" >
+
+    </form>
+
+    <!-- FOR STYLE -->
+    <p class="lead">
+        Hey! already have an account?  Then <a href="{% url "authentications:login" %}" ><b><i>Login</i></b> </a>  Yourself.
+    </p>
+{% endblock %}
